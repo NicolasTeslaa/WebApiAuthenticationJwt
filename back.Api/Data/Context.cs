@@ -5,7 +5,6 @@ namespace back.Api.Data
 {
     public class Context : IdentityDbContext
     {
-        public Context(){}
-        public Context(DbContextOptions<Context> options) : base(options){}
+        public Context(DbContextOptions options) : base(options) { }
     }
 }
