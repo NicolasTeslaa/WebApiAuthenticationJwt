@@ -34,27 +34,28 @@ namespace back.Api.Controllers
             {
                 var emailExist = await _userManager.FindByEmailAsync(requestDto.Email);
                 if (emailExist != null)
-                    return BadRequest("Email já existente");
+                    return BadRequest("Email já cadastrado");
 
                 var newUser = new IdentityUser()
                 {
-                    Email = requestDto.Email
+                    Email = requestDto.Email,
+                    UserName = requestDto.Email
                 };
 
                 var isCreate = await _userManager.CreateAsync(newUser, requestDto.Password);
                 if (isCreate.Succeeded)
                 {
+                    var token = GenerateJwtToken(newUser);
                     return Ok(new RegistratioRequestResponse()
                     {
                         Result = true,
-                        Token = ""
+                        Token = token
                     });
                 }
-                return BadRequest("Erro: tente novamente mais tarde");
+                return BadRequest(isCreate.Errors.Select(x => x.Description).ToList());
             }
             return BadRequest("Requisição inválida");
         }
-
         private string GenerateJwtToken(IdentityUser user)
         {
             var jwtTokenHandler = new JwtSecurityTokenHandler();
@@ -76,6 +77,31 @@ namespace back.Api.Controllers
             var jwtToken = jwtTokenHandler.WriteToken(token);
             return jwtToken;
 
+        }
+
+        [HttpPost]
+        [Route("Login")]
+        public async Task<IActionResult> Login([FromBody] UserLoginRequestDto requestDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingUser = await _userManager.FindByEmailAsync(requestDto.Email);
+                if (existingUser == null)
+                    return BadRequest("Email não encontrado");
+
+                var isPasswordValid = await _userManager.CheckPasswordAsync(existingUser, requestDto.Password);
+                if (isPasswordValid)
+                {
+                    var token = GenerateJwtToken(existingUser);
+                    return Ok(new LoginRequestResponse()
+                    {
+                        Token = token,
+                        Result = true
+                    });
+                }
+                return BadRequest("Senha inválida");
+            }
+            return BadRequest("Login não realizado");
         }
     }
 }
