@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  ApiUrl: 'https://backendcrudclientes.azurewebsites.net/api'
+  ApiUrl: 'https://localhost:7164/api/AuthManagement'
 };

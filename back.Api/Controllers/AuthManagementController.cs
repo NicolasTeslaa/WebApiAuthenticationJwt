@@ -10,6 +10,8 @@ using System.Text;
 
 namespace back.Api.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class AuthManagementController : ControllerBase
     {
         private readonly ILogger<AuthManagementController> _logger;
