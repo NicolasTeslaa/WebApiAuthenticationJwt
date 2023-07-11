@@ -45,6 +45,12 @@ builder.Services.AddAuthentication(options =>
      };
  });
 
+builder.Services.AddCors(options => options.AddPolicy("Frontend", policy =>
+{
+    policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+}
+));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -55,10 +61,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseCors("Frontend");
 app.MapControllers();
-
 app.Run();

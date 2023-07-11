@@ -9,7 +9,7 @@ import { JwtAuth } from 'src/models/JwtAuth';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService {
+export class AuthService {
   private baseUrl = environment.ApiUrl
   constructor(private http : HttpClient) {}
 
