@@ -12,9 +12,8 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent {
   login = new UserLoginModel()
-  usuarioAutenticado = false
-  localStoragee = (localStorage.getItem('jwtToken'))
   constructor(private authService: AuthService, private router: Router) {
+    this.authService.loggedUser()
 
   }
   validate() {

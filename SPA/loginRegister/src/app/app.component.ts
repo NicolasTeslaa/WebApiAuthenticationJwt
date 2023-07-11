@@ -1,4 +1,3 @@
-import { LoginComponent } from './login/login.component';
 import { Component, ElementRef } from '@angular/core';
 import { AuthService } from 'src/services/auth-service';
 
@@ -25,7 +24,6 @@ export class AppComponent {
       mostrar => this.mostrarMenu = mostrar)
   }
   reload() {
-    window.location.reload();
-
+    localStorage.removeItem('jwtToken')
   }
 }
