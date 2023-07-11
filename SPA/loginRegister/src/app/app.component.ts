@@ -1,4 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
+import { UserLoginModel } from 'src/models/userLoginModel';
+import { UserRegisterModel } from 'src/models/userRegisterModel';
 import { AuthService } from 'src/services/auth-service';
 
 @Component({
@@ -7,7 +9,7 @@ import { AuthService } from 'src/services/auth-service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
+  register = new UserRegisterModel()
   mostrarMenu = false;
   constructor(private el: ElementRef, private authService: AuthService) {
     this.mostraMenu();
