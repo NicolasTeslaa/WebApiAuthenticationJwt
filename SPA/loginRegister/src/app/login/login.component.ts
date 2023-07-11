@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { JwtAuth } from 'src/models/JwtAuth';
 import { UserLoginModel } from 'src/models/userLoginModel';
 import { AuthService } from 'src/services/auth-service';
 import Swal from 'sweetalert2';
@@ -11,6 +12,8 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent {
   login = new UserLoginModel()
+  usuarioAutenticado = false
+  localStoragee = (localStorage.getItem('jwtToken'))
   constructor(private authService: AuthService, private router: Router) {
 
   }
@@ -20,22 +23,29 @@ export class LoginComponent {
       form.classList.add('was-validated');
       return;
     }
-    this.authService.Login(this.login)
-      .toPromise()
-      .then((resultOk) => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Login realizado',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        this.router.navigate(['']);
+    // this.authService.Login(this.login)
+    //   .toPromise()
+    //   .then((resultOk) => {
+    //     Swal.fire({
+    //       icon: 'success',
+    //       title: 'Login realizado',
+    //       showConfirmButton: false,
+    //       timer: 1500
+    //     })
+    //     this.router.navigate(['']);
 
-      })
-      .catch(error => {
-        Swal.fire('Erro ao efetuar login!', `${error.message}`, 'error');
-      })
-    return;
+    //   })
+    //   .catch(error => {
+    //     Swal.fire('Erro ao efetuar login!', `${error.message}`, 'error');
+    //   })
+    // return;
+
+    this.authService.Login(this.login).subscribe((JwtAuth) => {
+      localStorage.setItem('jwtToken', JwtAuth.token)
+      this.authService.loggedUser()
+
+    })
   }
+
 
 }

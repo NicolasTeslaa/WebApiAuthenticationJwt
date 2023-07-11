@@ -1,3 +1,4 @@
+import { LoginComponent } from './../app/login/login.component';
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -12,11 +13,12 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = environment.ApiUrl
-  usuarioAutenticado = false;
   mostrarMenuEmitter = new EventEmitter<boolean>();
 
-  constructor(private http : HttpClient, private router: Router) {}
+  private baseUrl = environment.ApiUrl
+  usuarioAutenticado = false;
+
+  constructor(private http: HttpClient, private router: Router) { }
 
   Create(novoUsuario: UserRegisterModel): Observable<JwtAuth> {
     return this.http.post<JwtAuth>(`${this.baseUrl}/Register`, novoUsuario);
@@ -25,16 +27,15 @@ export class AuthService {
     return this.http.post<JwtAuth>(`${this.baseUrl}/Login`, usuarioLogado);
   }
   loggedUser() {
-    if () {
+    if (localStorage.getItem('jwtToken') != null) {
       this.usuarioAutenticado = true;
       this.router.navigate(["/dashboard"])
       this.mostrarMenuEmitter.emit(true)
     } else {
+      this.usuarioAutenticado = false;
+      this.router.navigate(["/login"])
 
       this.mostrarMenuEmitter.emit(false)
     }
   }
-  usuarioEstaAutenticado(){
-    this.usuarioAutenticado;
- }
 }

@@ -1,3 +1,4 @@
+import { LoginComponent } from './login/login.component';
 import { Component, ElementRef } from '@angular/core';
 import { AuthService } from 'src/services/auth-service';
 
@@ -21,10 +22,9 @@ export class AppComponent {
 
   mostraMenu() {
     this.authService.mostrarMenuEmitter.subscribe(
-      mostrar => this.mostrarMenu = mostrar
-
+      mostrar => this.mostrarMenu = mostrar)
   }
-  reload(){
+  reload() {
     window.location.reload();
 
   }
