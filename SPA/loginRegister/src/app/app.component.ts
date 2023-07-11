@@ -1,5 +1,4 @@
 import { Component, ElementRef } from '@angular/core';
-import { UserLoginModel } from 'src/models/userLoginModel';
 import { UserRegisterModel } from 'src/models/userRegisterModel';
 import { AuthService } from 'src/services/auth-service';
 

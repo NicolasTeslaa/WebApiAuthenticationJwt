@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtAuth } from 'src/models/JwtAuth';
 import { UserLoginModel } from 'src/models/userLoginModel';
@@ -11,40 +11,42 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  isLoading: boolean = false;
   login = new UserLoginModel()
+
+
   constructor(private authService: AuthService, private router: Router) {
     this.authService.loggedUser()
-
+  }
+goRegistrar(){
+}
+  loadData() {
   }
   validate() {
+    this.isLoading = true;
     var form = document.getElementsByClassName('needs-validation')[0] as HTMLFormElement;
     if (form.checkValidity() === false) {
       form.classList.add('was-validated');
       return;
     }
-    // this.authService.Login(this.login)
-    //   .toPromise()
-    //   .then((resultOk) => {
-    //     Swal.fire({
-    //       icon: 'success',
-    //       title: 'Login realizado',
-    //       showConfirmButton: false,
-    //       timer: 1500
-    //     })
-    //     this.router.navigate(['']);
-
-    //   })
-    //   .catch(error => {
-    //     Swal.fire('Erro ao efetuar login!', `${error.message}`, 'error');
-    //   })
-    // return;
-
     this.authService.Login(this.login).subscribe((JwtAuth) => {
       localStorage.setItem('jwtToken', JwtAuth.token)
       this.authService.loggedUser()
-
-    })
+      Swal.fire({
+        icon: 'success',
+        title: 'Login realizado',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 2000);
+      this.router.navigate(['']);
+    }, (error) => {
+      Swal.fire('Erro ao efetuar login!', `${error.message}`, 'error');
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 2000);
+    });
   }
-
-
 }

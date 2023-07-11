@@ -15,8 +15,33 @@ a {
 }
 
 .card {
+  margin-top: 5% !important;
   width: 50vw;
-  height: 90vh;
+  height: 60%;
   box-shadow: 30px -10px teal;
 
 }
+
+@media only screen and (max-width: 1123px) {
+  *{
+    font-size: 1.2rem;
+  }
+}
+@media only screen and (max-width: 921px) {
+  *{
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 1123px) {
+  .card{
+    width: 80vw;
+  }
+}
+@media only screen and (max-width: 390px) {
+  .card{
+    width: 95%;
+    height: 90vh;
+  }
+}
+
+

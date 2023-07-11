@@ -9,20 +9,26 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from 'src/services/auth-service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from 'src/services/guard/auth-guard';
+import { ClientesComponent } from './clientes/clientes/clientes.component';
+import { ClienteAddComponent } from './clientes/cliente-add/cliente-add.component';
+import { ClienteEditComponent } from './clientes/cliente-edit/cliente-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    ClientesComponent,
+    ClienteAddComponent,
+    ClienteEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule
-  ],
+  ], 
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })

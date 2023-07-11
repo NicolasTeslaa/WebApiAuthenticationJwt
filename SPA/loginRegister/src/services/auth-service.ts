@@ -6,7 +6,6 @@ import { UserRegisterModel } from 'src/models/userRegisterModel';
 import { Observable } from 'rxjs';
 import { UserLoginModel } from 'src/models/userLoginModel';
 import { JwtAuth } from 'src/models/JwtAuth';
-import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -29,12 +28,9 @@ export class AuthService {
   loggedUser() {
     if (localStorage.getItem('jwtToken') != null) {
       this.usuarioAutenticado = true;
-      this.router.navigate(["/dashboard"])
       this.mostrarMenuEmitter.emit(true)
     } else {
       this.usuarioAutenticado = false;
-      this.router.navigate(["/login"])
-
       this.mostrarMenuEmitter.emit(false)
     }
   }
