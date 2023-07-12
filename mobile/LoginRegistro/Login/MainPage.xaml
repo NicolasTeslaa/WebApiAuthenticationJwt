@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Microsoft.Maui.Controls;assembly=Microsoft.Maui.Controls"
+             x:Class="Login.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="150"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Faça Login para Continuar!"
+                FontSize="20"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+            <Frame Padding="10" BorderColor="#808080" BackgroundColor="#ececec">
+                <Grid ColumnDefinitions="30,*" Padding="5" ColumnSpacing="10">
+                    <Image Source="email.svg"/>
+                    <Entry Placeholder="Password" PlaceholderColor="{StaticResource Primary}" Grid.Column="1" IsPassword="True"/>
+                </Grid>
+            </Frame>
+            
+            <Entry Placeholder="Seu Email"
+                   Keyboard="Email"/>
+
+
+
+
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Fazer Login"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
