@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Page.Login"
+             Shell.NavBarIsVisible="false">
+    <VerticalStackLayout 
+            WidthRequest="390"
+            HeightRequest="750"
+            Padding="30,0"
+            VerticalOptions="Center">
+        <Image
+                Margin="0,5"
+                Source="logo.png"
+                HeightRequest="250"
+                HorizontalOptions="Center"/>
+
+        <Label
+                Text="Faça Login para Continuar!"
+                FontSize="20"
+                Margin="0,0"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+        <Frame Padding="10" BackgroundColor="#fafafa" Margin="0,20">
+           <Grid ColumnDefinitions="*,30" RowDefinitions="20,*" Padding="5" ColumnSpacing="10" >
+                <Label Text="Email" FontSize="15" TextColor="#808080"/>
+                <Image Source="email.svg" Grid.Row="1" Grid.Column="1"/>
+                <Entry Grid.Row="1" Grid.Column="0" MaxLength="50" ClearButtonVisibility="WhileEditing" ReturnType="Go" />
+            </Grid>
+        </Frame>
+        <Frame Padding="10" BackgroundColor="#fafafa" Margin="0,5">
+            <Grid ColumnDefinitions="*,30" RowDefinitions="20,*" Padding="5" ColumnSpacing="10" >
+                <Label Text="Senha" FontSize="15" TextColor="#808080"/>
+                <Entry IsPassword="True" Grid.Row="1" Grid.Column="0" ReturnType="Send" x:Name="passwordEntry"/>
+                <Image Source="eyeicon.svg" Grid.Row="1" Grid.Column="1">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TogglePasswordVisibility" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </Frame>
+        <Button
+                Margin="0,20"
+                Text="Fazer Login"
+                FontSize="20"
+                HorizontalOptions="Center"
+                WidthRequest="330" />
+        <Grid ColumnDefinitions="*,*">
+            <Grid ColumnDefinitions="20,*" Margin="0,20" ColumnSpacing="5">
+                <CheckBox />
+                <Label Text="Lembrar meu login" FontSize="15" Grid.Column="1" VerticalTextAlignment="Center" />
+            </Grid>
+            <Label Text="Ainda não tem Conta ? Registrar" Grid.Column="1" FontSize="16" VerticalTextAlignment="Center" HorizontalTextAlignment="End">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="NavigateRegister" NumberOfTapsRequired="1" />
+                </Label.GestureRecognizers>
+
+            </Label>
+        </Grid>
+
+    </VerticalStackLayout>
+</ContentPage>

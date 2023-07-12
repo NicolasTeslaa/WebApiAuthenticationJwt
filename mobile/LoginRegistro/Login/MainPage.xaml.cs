@@ -9,10 +9,7 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 	}
 
-    private void TogglePasswordVisibility(object sender, EventArgs e)
-    {
-        passwordEntry.IsPassword = !passwordEntry.IsPassword;
-    }
-
+   
+    
 }
 
