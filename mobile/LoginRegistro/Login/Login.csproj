@@ -49,6 +49,8 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\email.svg" />
+	  <None Remove="Resources\Images\eyeicon.svg" />
+	  <None Remove="Resources\Images\logo.png" />
 	</ItemGroup>
 
 	<ItemGroup>
