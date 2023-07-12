@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using back.Api.Models.DTOs;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace back.Api.Data
@@ -6,5 +7,7 @@ namespace back.Api.Data
     public class Context : IdentityDbContext
     {
         public Context(DbContextOptions options) : base(options) { }
+
+
     }
 }
