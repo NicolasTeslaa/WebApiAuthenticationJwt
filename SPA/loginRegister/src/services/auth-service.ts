@@ -20,10 +20,10 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   Create(novoUsuario: UserRegisterModel): Observable<JwtAuth> {
-    return this.http.post<JwtAuth>(`${this.baseUrl}/Register`, novoUsuario);
+    return this.http.post<JwtAuth>(`${this.baseUrl}AuthManagement/Register`, novoUsuario);
   }
   Login(usuarioLogado: UserLoginModel): Observable<JwtAuth> {
-    return this.http.post<JwtAuth>(`${this.baseUrl}/Login`, usuarioLogado);
+    return this.http.post<JwtAuth>(`${this.baseUrl}AuthManagement/Login`, usuarioLogado);
   }
   loggedUser() {
     if (localStorage.getItem('jwtToken') != null) {

@@ -40,7 +40,7 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddCors(options => options.AddPolicy("Frontend", policy =>
 {
-    policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+    policy.WithOrigins("http://localhost:4200", "https://192.168.3.241:4200").AllowAnyMethod().AllowAnyHeader();
 }
 ));
 
@@ -48,16 +48,20 @@ builder.Services.AddCors(options => options.AddPolicy("Frontend", policy =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-app.UseCors();
+app.UseCors(builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .WithExposedHeaders("Content-Disposition"));
 app.MapControllers();
 
 app.Run();

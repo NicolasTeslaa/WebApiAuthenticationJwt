@@ -12,4 +12,6 @@
         Route="MainPage" />
     <ShellContent
         ContentTemplate="{DataTemplate pages:Register}" FlyoutItemIsVisible="False" Route="Registrar"/>
+    <ShellContent
+        ContentTemplate="{DataTemplate pages:Dashboard}" FlyoutItemIsVisible="False" Route="Dashboard"/>
 </Shell>
