@@ -7,6 +7,7 @@ using Login.Models;
 using Login.Services;
 using Microsoft.Maui.Controls;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Login.Page;
 
@@ -54,20 +55,21 @@ public partial class Login : ContentPage
             try
             {
                 // Enviar a requisição POST para a API
-                var response = await client.PostAsync("https://192.168.3.241:443/api/AuthManagement/Login ", content);
+                var response = await client.PostAsync("http://192.168.3.241:8099/api/AuthManagement/Login ", content);
 
                 // Verificar se a requisição foi bem-sucedida (código 200)
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    DisplayAlert("deu bom porra", "parabens caralho, requisição bateu no servidor", "OK", "Cancelar");
+                    JObject jsonObject = JObject.Parse(json);
+                    string token = (string)jsonObject["token"];
                     Shell.Current.Navigation.PushAsync(new Dashboard());
                     return;
 
                 }
                 else
                 {
-                    DisplayAlert("deu erro porra", "Erro", "OK", "Cancelar");
+                    DisplayAlert("Erro", "Login ou Senha inválidos", "OK", "Voltar");
 
                 }
             }

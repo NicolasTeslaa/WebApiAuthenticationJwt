@@ -2,11 +2,80 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Login.Page.Dashboard"
-             Title="Dashboard">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Dashboard"
+             Shell.FlyoutBehavior ="Flyout">
+    <ScrollView>
+        <StackLayout>
+            <Grid WidthRequest="380"
+              Margin="0,10"
+              RowSpacing="10"
+              HorizontalOptions="Center"
+              RowDefinitions="200,170,200">
+                <Label Text="Clientes" Grid.ColumnSpan="2" FontSize="20" TextColor="Black" FontAttributes="Bold"/>
+                <HorizontalStackLayout Spacing="10">
+                    <Frame WidthRequest="120" HeightRequest="120">
+                        <VerticalStackLayout HorizontalOptions="Center">
+                            <Label Text="Total" FontSize="20" Margin="0,5"  TextColor="black" FontAttributes="Bold" />
+                            <Label Text="24" FontSize="20" Margin="0,5"  TextColor="black" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="goClientes" NumberOfTapsRequired="1" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+
+                    <Frame WidthRequest="120" HeightRequest="120">
+                        <VerticalStackLayout HorizontalOptions="Center">
+                            <Label Text="Ativos" FontSize="20" Margin="0,5"  TextColor="black" FontAttributes="Bold"/>
+                            <Label Text="12" FontSize="20" Margin="0,5"  TextColor="black" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="goClientes" NumberOfTapsRequired="1" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <Frame WidthRequest="120" HeightRequest="120">
+                        <VerticalStackLayout HorizontalOptions="Center">
+                            <Label Text="Inativos" FontSize="20" Margin="0,5"  TextColor="black" FontAttributes="Bold"/>
+                            <Label Text="12" FontSize="20" Margin="0,5"  TextColor="black" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="goClientes" NumberOfTapsRequired="1" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </HorizontalStackLayout>
+                <Label Text="Faturamento" Grid.ColumnSpan="2" FontSize="20" TextColor="Black" Grid.Row="1" Margin="0,-25" FontAttributes="Bold"/>
+                <VerticalStackLayout Spacing="10" Grid.Row="2" HeightRequest="500" Margin="0,-10">
+                    <Frame WidthRequest="350" HeightRequest="120">
+                        <VerticalStackLayout>
+                            <Label Text="Total" FontSize="20"  TextColor="Black" FontAttributes="Bold" />
+                            <Label Text="R$ 120.000,65" FontSize="30" Margin="0,5"  TextColor="black" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="goClientes" NumberOfTapsRequired="1" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+
+                    <Frame WidthRequest="350" HeightRequest="120">
+                        <VerticalStackLayout>
+                            <Label Text="Entrada" FontSize="20"  TextColor="black" FontAttributes="Bold"/>
+                            <Label Text="R$ 72.358,30" FontSize="30" Margin="0,5"  TextColor="black" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="goClientes" NumberOfTapsRequired="1" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <Frame WidthRequest="350" HeightRequest="120">
+                        <VerticalStackLayout >
+                            <Label Text="Saída" FontSize="20" TextColor="black" FontAttributes="Bold"/>
+                            <Label Text="R$ 47.642,35" FontSize="30" Margin="0,5"  TextColor="black" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="goClientes" NumberOfTapsRequired="1" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </VerticalStackLayout>
+
+
+            </Grid>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

@@ -4,14 +4,37 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Login"    
-    xmlns:pages="clr-namespace:Login.Page"    
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:pages="clr-namespace:Login.Page">
+    <Shell.FlyoutHeader>
+        <Grid HeightRequest="100" ColumnDefinitions="*" BackgroundColor="{StaticResource Primary}" VerticalOptions="Center" >
+            <Image Source="logo.png" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
+    </Shell.FlyoutHeader>
     <ShellContent
-        Title="Home"
         ContentTemplate="{DataTemplate pages:Login}"
         Route="MainPage" />
     <ShellContent
+        Title="Dashboard"
+        ContentTemplate="{DataTemplate pages:Dashboard}"
+        Route="MainPage"
+        FlyoutItemIsVisible="False"/>
+    <ShellContent
         ContentTemplate="{DataTemplate pages:Register}" FlyoutItemIsVisible="False" Route="Registrar"/>
     <ShellContent
-        ContentTemplate="{DataTemplate pages:Dashboard}" FlyoutItemIsVisible="False" Route="Dashboard"/>
+        ContentTemplate="{DataTemplate pages:Clientes}"
+        Route="Clientes"
+        Title="Clientes"/>
+    <Shell.FlyoutFooter>
+        <Grid HeightRequest="80" ColumnDefinitions="*,*" RowDefinitions="30,30" VerticalOptions="Center" BackgroundColor="#ccc" Padding="10">
+            <HorizontalStackLayout Spacing="10">
+                <Image Source="user.png"  WidthRequest="20" HorizontalOptions="Start"/>
+                <Label Text="Nicolas Fernando" TextColor="{StaticResource Primary}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Subtitle" FontAttributes="Bold"  />
+            </HorizontalStackLayout>
+            <Label Text="Desconectar" Grid.Row="1" HorizontalOptions="End"  Grid.Column="1">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="logoff" NumberOfTapsRequired="1" />
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+    </Shell.FlyoutFooter>
 </Shell>

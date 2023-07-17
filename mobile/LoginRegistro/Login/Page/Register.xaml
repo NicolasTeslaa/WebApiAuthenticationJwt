@@ -25,14 +25,14 @@
             <Grid ColumnDefinitions="*,30" RowDefinitions="20,*" Padding="5" ColumnSpacing="10" >
                 <Label Text="Seu nome" FontSize="15" TextColor="#808080"/>
                 <Image Source="person.svg" Grid.Row="1" Grid.Column="1"/>
-                <Entry Grid.Row="1" Grid.Column="0" MaxLength="50" ClearButtonVisibility="WhileEditing" ReturnType="Go" />
+                <Entry Grid.Row="1" Grid.Column="0" MaxLength="50" ClearButtonVisibility="WhileEditing" ReturnType="Go" x:Name="nameEntry"/>
             </Grid>
         </Frame>
         <Frame Padding="10" BackgroundColor="#fafafa" Margin="0,5">
             <Grid ColumnDefinitions="*,30" RowDefinitions="20,*" Padding="5" ColumnSpacing="10" >
                 <Label Text="Email" FontSize="15" TextColor="#808080"/>
                 <Image Source="email.svg" Grid.Row="1" Grid.Column="1"/>
-                <Entry Grid.Row="1" Grid.Column="0" MaxLength="50" ClearButtonVisibility="WhileEditing" ReturnType="Go" />
+                <Entry Grid.Row="1" Grid.Column="0" MaxLength="50" ClearButtonVisibility="WhileEditing" ReturnType="Go" x:Name="emailEntry"/>
             </Grid>
         </Frame>
         <Frame Padding="10" BackgroundColor="#fafafa" Margin="0,5">
@@ -58,7 +58,7 @@
                 FontSize="20"
                 HorizontalOptions="Center"
                 WidthRequest="330" 
-                Clicked="ReturnLogin"
+                Clicked="Validate"
             />
     </VerticalStackLayout>
 </ContentPage>

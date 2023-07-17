@@ -6,4 +6,9 @@ public partial class AppShell : Shell
 	{
 		InitializeComponent();
 	}
+	private async void logoff(object sender, EventArgs e)
+	{
+        await Navigation.PushAsync(new Page.Login());
+
+    }
 }

@@ -6,4 +6,13 @@ public partial class Dashboard : ContentPage
 	{
 		InitializeComponent();
 	}
+    private void goClientes(object sender, EventArgs e)
+    {
+
+    }
+    private void goFaturamento(object sender, EventArgs e)
+    {
+
+    }
+
 }
