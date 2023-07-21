@@ -1,74 +1,77 @@
-<div class="" *ngIf="mostrarMenu">
-  <nav class="topnav navbar navbar-expand shadow justify-content-between  navbar-dark" id="sidenavAccordion">
-    <div class="">
-      <button (click)="toogleMenu()" class="btn btn-icon order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle">
-        <svg height="15" viewBox="0 0 271 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10.4797 10.5063H260.396" stroke="#292D32" stroke-width="20.8264" stroke-linecap="round" />
-          <path d="M10.4797 79.9276H260.396" stroke="#292D32" stroke-width="20.8264" stroke-linecap="round" />
-          <path d="M10.4797 149.349H260.396" stroke="#292D32" stroke-width="20.8264" stroke-linecap="round" />
-        </svg>
-      </button>
-      <a routerLink="/dashboard"><img src="../assets/img/favicon.ico.png" height="30" alt=""></a>
-    </div>
-    <a style="padding: 10px;" (click)="reload()" href="">Sair</a>
-  </nav>
-  <div id="layoutSidenav">
-    <div id="layoutSidenav_nav" class="d-print-none">
-      <nav class="sidenav shadow-right sidenav-light">
-        <div class="sidenav-menu">
-          <div class="nav accordion" id="accordionSidenav">
+<div class="body">
+  <div class="" *ngIf="mostrarMenu">
+    <nav class="topnav navbar navbar-expand shadow justify-content-between  navbar-dark" id="sidenavAccordion">
+      <div class="">
+        <button (click)="toogleMenu()" class="btn btn-icon order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle">
+          <svg height="15" viewBox="0 0 271 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.4797 10.5063H260.396" stroke="#292D32" stroke-width="20.8264" stroke-linecap="round" />
+            <path d="M10.4797 79.9276H260.396" stroke="#292D32" stroke-width="20.8264" stroke-linecap="round" />
+            <path d="M10.4797 149.349H260.396" stroke="#292D32" stroke-width="20.8264" stroke-linecap="round" />
+          </svg>
+        </button>
+        <a routerLink="/dashboard"><img src="../assets/img/favicon.ico.png" height="30" alt=""></a>
+      </div>
+      <a style="padding: 10px;" (click)="reload()" href="">Sair</a>
+    </nav>
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav" class="d-print-none">
+        <nav class="sidenav shadow-right sidenav-light">
+          <div class="sidenav-menu">
+            <div class="nav accordion" id="accordionSidenav">
 
-            <div class="sidenav-menu-heading">Gerencial</div>
-            <a class="nav-link collapsed" routerLink="/dashboard">
-              <div class="nav-link-icon"> <i class="fas fa-chart-line"></i></div>
-              Dashboard
-            </a>
+              <div class="sidenav-menu-heading">Gerencial</div>
+              <a class="nav-link collapsed" routerLink="/dashboard">
+                <div class="nav-link-icon"> <i class="fas fa-chart-line"></i></div>
+                Dashboard
+              </a>
 
-            <div class="sidenav-menu-heading">Módulos</div>
-            <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
-              data-bs-target="#dropdownCadastros" aria-expanded="false" aria-controls="collapsePages">
-              <div class="nav-link-icon"><i class="fas fa-box"></i></div>
-              Cadastros
-              <div class="sidenav-collapse-arrow">
-                <i class="fas fa-angle-down"></i>
+              <div class="sidenav-menu-heading">Módulos</div>
+              <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
+                data-bs-target="#dropdownCadastros" aria-expanded="false" aria-controls="collapsePages">
+                <div class="nav-link-icon"><i class="fas fa-box"></i></div>
+                Cadastros
+                <div class="sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </a>
+
+              <div class="collapsed" id="dropdownCadastros" data-bs-parent="#accordionSidenav">
+                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesMenu">
+                  <a class="nav-link collapsed" routerLink="clientes" data-bs-toggle="collapse">
+                    Clientes
+                  </a>
+                  <a class="nav-link collapsed" routerLink="users" data-bs-toggle="collapse">
+                    Usuarios
+                  </a>
+                </nav>
               </div>
-            </a>
 
-            <div class="collapsed" id="dropdownCadastros" data-bs-parent="#accordionSidenav">
-              <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesMenu">
-                <a class="nav-link collapsed" routerLink="clientes" data-bs-toggle="collapse">
-                  Clientes
-                </a>
-                <a class="nav-link collapsed" routerLink="users" data-bs-toggle="collapse">
-                  Usuarios
-                </a>
-              </nav>
+              <div class="sidenav-menu-heading">Manutenção</div>
+              <a class="nav-link collapsed" routerLink="planilhas">
+                <div class="nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
+                Faturamento
+              </a>
             </div>
-
-            <div class="sidenav-menu-heading">Manutenção</div>
-            <a class="nav-link collapsed" routerLink="planilhas">
-              <div class="nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
-              Faturamento
-            </a>
           </div>
-        </div>
-        <div class="sidenav-footer">
-          <div class="sidenav-footer-content">
-            <div class="sidenav-footer-subtitle">Logado como:</div>
-            <div class="sidenav-footer-title"> {{register.name}} </div>
+          <div class="sidenav-footer">
+            <div class="sidenav-footer-content">
+              <div class="sidenav-footer-subtitle">Logado como:</div>
+              <div class="sidenav-footer-title"> {{register.name}} </div>
+            </div>
           </div>
-        </div>
-      </nav>
-    </div>
-    <div id="layoutSidenav_content">
+        </nav>
+      </div>
+      <div id="layoutSidenav_content">
 
-      <main>
-        <div class="site-container" style="padding: 20px">
-          <router-outlet></router-outlet>
+        <main>
+          <div class="site-container" style="padding: 20px">
+            <router-outlet></router-outlet>
 
-        </div>
-      </main>
+          </div>
+        </main>
+      </div>
     </div>
   </div>
+  <app-login *ngIf="!mostrarMenu"></app-login>
+
 </div>
-<app-login *ngIf="!mostrarMenu"></app-login>

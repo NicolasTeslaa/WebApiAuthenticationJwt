@@ -12,15 +12,19 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent {
   isLoading: boolean = false;
-  login = new UserLoginModel()
-
+  user = new UserLoginModel()
+  senha: string = '';
+  mostrarSenha: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {
     this.authService.loggedUser()
   }
-goRegistrar(){
-}
+  goRegistrar() {
+  }
   loadData() {
+  }
+  toggleMostrarSenha() {
+    this.mostrarSenha = !this.mostrarSenha;
   }
   validate() {
     this.isLoading = true;
@@ -29,7 +33,7 @@ goRegistrar(){
       form.classList.add('was-validated');
       return;
     }
-    this.authService.Login(this.login).subscribe((JwtAuth) => {
+    this.authService.Login(this.user).subscribe((JwtAuth) => {
       localStorage.setItem('jwtToken', JwtAuth.token)
       this.authService.loggedUser()
       Swal.fire({
